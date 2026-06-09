@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify form detection — do not delete</title>
+  </head>
+  <body>
+    <!--
+      This static form exists ONLY so Netlify's build-time form parser
+      can detect the contact form (Next.js static export ships
+      pre-rendered HTML; the real contact form is React-rendered and
+      Netlify can't detect attributes on a hydrated component).
+      The React form (components/Contact.tsx) POSTs to /__forms.html
+      with the same field names declared here.
+    -->
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>
