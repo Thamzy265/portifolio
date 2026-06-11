@@ -6,8 +6,11 @@ export default function Footer() {
   return (
     <footer className="border-t border-paper-line bg-paper">
       <div className="mx-auto flex max-w-content flex-col items-start justify-between gap-4 px-5 py-10 sm:flex-row sm:items-center sm:px-8">
-        <div className="text-sm text-ink-muted">
-          © {year} William Nasoni. Built in Manchester.
+        <div className="space-y-1 text-sm text-ink-muted">
+          <div>© {year} William Nasoni.</div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-subtle">
+            Designed &amp; built by William Nasoni
+          </div>
         </div>
         <ul className="flex items-center gap-1">
           <li>

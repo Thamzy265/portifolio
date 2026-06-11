@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '@/lib/site';
 
 export default function Nav() {
@@ -46,12 +45,12 @@ export default function Nav() {
           William Nasoni<span className="text-accent">.</span>
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-7 md:flex">
           {NAV_LINKS.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-sm text-ink-muted transition-colors hover:text-ink"
+                className="font-mono text-[12px] uppercase tracking-[0.14em] text-ink-muted transition-colors hover:text-ink"
               >
                 {l.label}
               </a>
@@ -67,7 +66,10 @@ export default function Nav() {
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          <span className="menu-toggle" data-open={open} aria-hidden="true">
+            <span />
+            <span />
+          </span>
         </button>
       </nav>
 
