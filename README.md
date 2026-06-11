@@ -1,14 +1,14 @@
 # William Nasoni — Portfolio
 
-A clean, minimal, light-theme personal portfolio for William Nasoni — Full Stack & Mobile Developer based in Manchester, UK.
+My personal portfolio site — Senior Full Stack & Mobile Developer, based in Manchester, UK.
 
-The site is **industry-led**: it presents the **industries** William works in (Education, Finance, Customer Engagement) and the **capabilities** he offers across all of them — with Selected Work kept light as supporting evidence.
+The site is **industry-led**: it leads with the industries I work in (Education, Finance, Customer Engagement) and the capabilities I offer across all of them, with a compact Selected Work list as supporting evidence.
 
-Built with **Next.js (App Router) + TypeScript + Tailwind CSS** (Geist + Geist Mono via `next/font`), configured as a **static export** ready to deploy to **Netlify** (free tier) with **Netlify Forms** wired up for the contact form.
+Built with **Next.js (App Router) + TypeScript + Tailwind CSS** (Geist + Geist Mono via `next/font`), configured as a **static export** and deployed to **Netlify** (free tier) with **Netlify Forms** wired up for the contact form.
 
 ---
 
-## Run locally
+## Run it locally
 
 ```bash
 npm install
@@ -23,38 +23,35 @@ Open <http://localhost:3000>.
 npm run build
 ```
 
-Output lands in `out/` and can be served by any static host. `netlify.toml` is preconfigured so this just works on Netlify.
+The output lands in `out/` and can be served by any static host. `netlify.toml` is preconfigured so it just works on Netlify.
 
 ---
 
-## Where to drop assets
+## Where my assets live
 
-All assets go into `public/` (referenced from the root, e.g. `/cv/...`).
+Everything lives in `public/` (referenced from the root, e.g. `/cv/...`).
 
-| Asset            | Drop it here                          | Notes                                                                                            |
+| Asset            | Path                                  | Notes                                                                                            |
 | ---------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | CV PDF           | `public/cv/William-Nasoni-CV.pdf`     | The hero **Download CV** button links here.                                                      |
-| Profile photo    | `public/profile.jpg` (or similar)     | Currently a styled "WN" placeholder in the About section — see `components/About.tsx`.           |
-| Intro video      | `public/video/intro.mp4` **or** an embed URL | See below.                                                                              |
-| Favicon          | `public/favicon.svg`                  | Already set (initials block).                                                                    |
+| Profile photo    | `public/profile.jpg`                  | Wired up via `PROFILE_PHOTO` in `lib/site.ts`. Set to `null` to fall back to the "WN" placeholder. |
+| Intro video      | `public/video/intro.mp4` **or** an embed URL | The `IntroVideo` component is currently not rendered — I'll add it back when the video is ready. |
+| Favicon          | `public/favicon.svg`                  | Initials block.                                                                                  |
 
-### Setting the intro video
+### Adding the intro video back
 
-Open `lib/site.ts` and edit `INTRO_VIDEO`:
+When I'm ready to add the video:
 
-```ts
-// For a local file:
-export const INTRO_VIDEO = { type: 'local', src: '/video/intro.mp4' };
+1. Drop the file in `public/video/intro.mp4` (or set up an embed URL).
+2. In `lib/site.ts`, switch `INTRO_VIDEO`:
+   ```ts
+   // Local file:
+   export const INTRO_VIDEO = { type: 'local', src: '/video/intro.mp4' };
 
-// For YouTube/Vimeo embed:
-export const INTRO_VIDEO = { type: 'embed', src: 'https://www.youtube.com/embed/VIDEO_ID' };
-```
-
-Leaving it as `placeholder` shows the styled "Video coming soon" block.
-
-### Updating the GitHub URL
-
-`GITHUB_URL` in `lib/site.ts` is set to `https://github.com/thamzy265`. Change it there if it moves.
+   // YouTube / Vimeo embed:
+   export const INTRO_VIDEO = { type: 'embed', src: 'https://www.youtube.com/embed/VIDEO_ID' };
+   ```
+3. Add `<IntroVideo />` back into `app/page.tsx`.
 
 ---
 
@@ -65,10 +62,10 @@ The contact form uses **Netlify Forms** — no backend, no API keys.
 How it works:
 
 - `public/__forms.html` is a static HTML file containing a plain HTML form with the `name="contact"` attribute. Netlify's build-time form parser discovers this file and registers the form.
-- The real React form in `components/Contact.tsx` POSTs to `/__forms.html` with `application/x-www-form-urlencoded`, matching field names.
+- The real React form in `components/Contact.tsx` POSTs to `/__forms.html` as `application/x-www-form-urlencoded` with matching field names.
 - Submissions appear in **Netlify dashboard → Site → Forms**.
 
-**Important:** After your first deploy, go to **Site settings → Forms → Form notifications** in Netlify and add an email notification so you get notified of new messages.
+**After the first deploy:** I need to go to **Site settings → Forms → Form notifications** in Netlify and add an email notification so I get pinged about new messages.
 
 The form also has a hidden `bot-field` honeypot.
 
@@ -76,19 +73,11 @@ The form also has a hidden `bot-field` honeypot.
 
 ## Deploying to Netlify
 
-1. Push this repo to GitHub.
-2. In Netlify: **Add new site → Import an existing project → Pick this repo**.
-3. Netlify will auto-detect `netlify.toml` (build command `npm run build`, publish dir `out`). Confirm and deploy.
-4. Once deployed, enable email notifications for the contact form (see above).
+1. Push to GitHub.
+2. In Netlify: **Add new site → Import an existing project → pick this repo**.
+3. Netlify auto-detects `netlify.toml` (build command `npm run build`, publish dir `out`). Confirm and deploy.
+4. Enable email notifications for the contact form (see above).
 5. (Optional) Set a custom domain in **Site settings → Domain management**.
-
----
-
-## Things flagged to confirm
-
-- **Years of experience** — CV says "5+ years"; bio says "7 years". The site uses **7 years** consistently (the more current source). Confirm or adjust in `lib/site.ts` and the About component if needed.
-- **Domain** — `SITE_URL` in `app/layout.tsx` is set to `https://williamnasoni.com`. Update if the production domain is different (affects OG tags and sitemap).
-- **Phone number** — intentionally not displayed anywhere (per spec).
 
 ---
 
@@ -96,33 +85,39 @@ The form also has a hidden `bot-field` honeypot.
 
 ```
 app/
-  layout.tsx       # root layout, fonts (Geist + Geist Mono), metadata, OG/twitter, favicon
-  page.tsx         # single-page composition of all sections
-  sitemap.ts       # sitemap.xml generator
-  globals.css      # Tailwind base + design tokens + reveal animation
+  layout.tsx          # root layout, fonts (Geist + Geist Mono), metadata, OG/twitter, favicon
+  page.tsx            # single-page composition of all sections
+  sitemap.ts          # sitemap.xml generator
+  globals.css         # Tailwind base + design tokens + reveal/hero-stagger animations
 components/
-  Nav.tsx          # sticky nav + mobile hamburger
-  Hero.tsx
-  About.tsx
-  IntroVideo.tsx
-  Industries.tsx   # three industry cards (Education / Finance / CX) — the core
-  Capabilities.tsx # cross-cutting capability grid ("What I do")
-  Experience.tsx   # timeline
-  SelectedWork.tsx # compact, understated list of representative builds
-  Skills.tsx       # grouped skill tags
-  Contact.tsx      # Netlify Forms contact form
+  Nav.tsx             # sticky nav + animated hamburger
+  Hero.tsx            # name, subtitle, value prop, CTAs (with on-load stagger)
+  About.tsx           # bio + stat strip + profile photo
+  Showcase.tsx        # "What I build" — bullets + animated phone/code illustration
+  HeroIllustration.tsx # the inline-SVG phone + code window used by Showcase
+  TechStrip.tsx       # "Built with" — monochrome inline-SVG tech logos
+  IntroVideo.tsx      # video placeholder/embed (currently not in page.tsx)
+  Industries.tsx      # three industry cards with count-up headline stats — the core
+  Capabilities.tsx    # cross-cutting capability grid
+  Experience.tsx      # timeline
+  SelectedWork.tsx    # compact, understated list of representative builds
+  Skills.tsx          # grouped skill tags
+  Contact.tsx         # Netlify Forms contact form
   Footer.tsx
-  RevealOnScroll.tsx # fade-in IntersectionObserver, respects reduced-motion
-  Section.tsx      # shared section shell (eyebrow + title + intro)
+  AnimatedNumber.tsx  # IntersectionObserver-driven count-up
+  RevealOnScroll.tsx  # fade-in IntersectionObserver, respects reduced-motion
+  Section.tsx         # shared section shell (eyebrow + index + title + intro)
 lib/
-  site.ts          # ALL site content + URLs — edit here
+  site.ts             # ALL site content + URLs — edit here
 public/
-  __forms.html     # hidden static form for Netlify detection (do not delete)
+  __forms.html        # hidden static form for Netlify detection (do not delete)
+  cv/William-Nasoni-CV.pdf
+  profile.jpg
   favicon.svg
   robots.txt
 netlify.toml
-next.config.mjs    # output: 'export' (static export)
+next.config.mjs       # output: 'export' (static export)
 tailwind.config.ts
 ```
 
-Edit `lib/site.ts` to update any content — `INDUSTRIES`, `CAPABILITIES`, `EXPERIENCE`, `SELECTED_WORK`, `SKILLS`, `NAV_LINKS`, plus contact URLs and the intro-video config. Restart the dev server after edits.
+To update any content, edit `lib/site.ts` — `INDUSTRIES`, `CAPABILITIES`, `EXPERIENCE`, `SELECTED_WORK`, `SKILLS`, `NAV_LINKS`, plus contact URLs, the intro-video config, and the profile-photo path. The dev server hot-reloads on save.
