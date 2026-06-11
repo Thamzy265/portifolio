@@ -1,18 +1,24 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({
+const geistSans = Geist({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-sans',
+});
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
 });
 
 const SITE_URL = 'https://williamnasoni.com'; // TODO: replace with actual domain when known
 const SITE_NAME = 'William Nasoni';
-const SITE_TITLE = 'William Nasoni — Full Stack & Mobile Developer';
+const SITE_TITLE = 'William Nasoni — Senior Full Stack & Mobile Developer';
 const SITE_DESCRIPTION =
-  'Full Stack & Mobile Developer in Manchester, UK. Building scalable web and mobile applications for the World Bank, Corus International, and government agencies across Africa.';
+  'Senior Full Stack & Mobile Developer in Manchester, UK — 7 years, 10+ production systems across 6 countries. Building data-driven platforms for education, finance, and customer engagement.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -23,7 +29,7 @@ export const metadata: Metadata = {
   creator: SITE_NAME,
   keywords: [
     'William Nasoni',
-    'Full Stack Developer',
+    'Senior Full Stack Developer',
     'Mobile Developer',
     'Flutter',
     'Angular',
@@ -56,7 +62,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased">
         <a
           href="#main"

@@ -1,8 +1,10 @@
 import Section from './Section';
+import AnimatedNumber from './AnimatedNumber';
+import { PROFILE_PHOTO } from '@/lib/site';
 
 export default function About() {
   return (
-    <Section id="about" eyebrow="About" title="A developer who builds for the long haul.">
+    <Section id="about" index="01" eyebrow="About" title="A developer who builds for the long haul.">
       <div className="grid gap-12 lg:grid-cols-[1fr_320px] lg:gap-16">
         <div className="reveal space-y-5 text-base leading-relaxed text-ink-soft sm:text-lg">
           <p>
@@ -30,6 +32,10 @@ export default function About() {
             I work across the full stack and mobile — Angular, Node.js, Flutter, Vue.js,
             Laravel, Docker — and I adapt to whatever the project needs.
           </p>
+          <p>
+            These days, I&apos;m building a unified call-centre campaign platform serving
+            600+ agents, and rebuilding a cross-platform field data-capture app in Flutter.
+          </p>
 
           <blockquote className="mt-8 border-l-2 border-accent pl-5 text-lg italic text-ink sm:text-xl">
             &ldquo;My code has gone where I haven&apos;t, and I&apos;m proud of that.&rdquo;
@@ -37,37 +43,59 @@ export default function About() {
         </div>
 
         <aside className="reveal space-y-8">
-          {/* Profile photo placeholder — TODO: replace with an actual image in /public/profile.jpg */}
-          <div
-            aria-label="Profile photo placeholder"
-            className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-paper-line bg-gradient-to-br from-paper-alt to-accent-soft"
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-7xl font-semibold tracking-tightish text-accent">WN</span>
-            </div>
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-paper-line bg-gradient-to-br from-paper-alt to-accent-soft">
+            {PROFILE_PHOTO ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={PROFILE_PHOTO}
+                alt="William Nasoni"
+                className="absolute inset-0 h-full w-full object-cover object-top"
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center" aria-label="Profile photo placeholder">
+                <span className="text-7xl font-semibold tracking-tightish text-accent">WN</span>
+              </div>
+            )}
           </div>
 
-          <dl className="grid grid-cols-3 gap-4 rounded-2xl border border-paper-line bg-paper-alt/40 p-5 text-center">
-            <div>
-              <dt className="text-xs uppercase tracking-wider text-ink-subtle">Years</dt>
-              <dd className="mt-1 text-2xl font-semibold text-ink">7+</dd>
-            </div>
-            <div>
-              <dt className="text-xs uppercase tracking-wider text-ink-subtle">Stack</dt>
-              <dd className="mt-1 text-sm font-medium text-ink">Web + Mobile</dd>
-            </div>
-            <div>
-              <dt className="text-xs uppercase tracking-wider text-ink-subtle">Clients</dt>
-              <dd className="mt-1 text-sm font-medium text-ink">Global</dd>
-            </div>
+          <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-paper-line bg-paper-line">
+            <Stat value="7" suffix="years" label="Experience" />
+            <Stat value="10+" label="Production systems" />
+            <Stat value="6" label="Countries" />
+            <Stat value="Web + Mobile" label="Stack" small />
           </dl>
-
-          <p className="text-sm leading-relaxed text-ink-muted">
-            Clients incl. <span className="text-ink">World Bank</span>,{' '}
-            <span className="text-ink">Corus International</span>, and government ministries.
-          </p>
         </aside>
       </div>
     </Section>
+  );
+}
+
+function Stat({
+  value,
+  suffix,
+  label,
+  small,
+}: {
+  value: string;
+  suffix?: string;
+  label: string;
+  small?: boolean;
+}) {
+  return (
+    <div className="bg-paper p-5">
+      <div
+        className={`text-ink ${
+          small ? 'text-base font-semibold' : 'text-3xl font-semibold tracking-tightish sm:text-4xl'
+        }`}
+      >
+        {small ? value : <AnimatedNumber value={value} />}
+        {suffix && (
+          <span className="ml-1 text-sm font-normal text-ink-muted">{suffix}</span>
+        )}
+      </div>
+      <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-subtle">
+        {label}
+      </div>
+    </div>
   );
 }

@@ -11,9 +11,11 @@ export default function IntroVideo() {
   return (
     <Section
       id="intro-video"
+      index="03"
       eyebrow="Intro"
       title="A short hello."
       intro="A quick video introduction — who I am, what I build, and how I work."
+      className="bg-paper-alt"
     >
       <div className="reveal">
         <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-paper-line bg-ink shadow-sm">

@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -22,9 +18,72 @@ html {
 body {
   color: theme('colors.ink.DEFAULT');
   background-color: theme('colors.paper.DEFAULT');
-  font-feature-settings: 'cv11', 'ss01';
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Hero illustration animations — one-shot, no looping. */
+.hero-bars rect {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: hero-bar-grow 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes hero-bar-grow {
+  0%   { transform: scaleY(0); opacity: 0; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+.hero-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hero-line-draw 1.6s ease-out 0.4s both;
+}
+@keyframes hero-line-draw {
+  0%   { stroke-dashoffset: 1; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bars rect { animation: none; }
+  .hero-line { stroke-dashoffset: 0; animation: none; }
+}
+
+/* Animated hamburger — two bars morph into an X on toggle. */
+.menu-toggle { width: 22px; height: 16px; position: relative; }
+.menu-toggle span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.75px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1),
+              opacity 180ms ease-out,
+              top 220ms cubic-bezier(0.2, 0.7, 0.2, 1) 60ms;
+}
+.menu-toggle span:nth-child(1) { top: 3px; }
+.menu-toggle span:nth-child(2) { top: 11px; }
+.menu-toggle[data-open='true'] span:nth-child(1) {
+  top: 7px;
+  transform: rotate(45deg);
+  transition-delay: 0ms, 0ms, 0ms;
+}
+.menu-toggle[data-open='true'] span:nth-child(2) {
+  top: 7px;
+  transform: rotate(-45deg);
+  transition-delay: 0ms, 0ms, 0ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-toggle span { transition: none; }
+}
+
+/* Dot-grid utility used in the hero */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(15,111,106,0.22) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-position: 0 0;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%);
 }
 
 ::selection {
@@ -44,8 +103,9 @@ textarea:focus-visible {
 /* Reveal-on-scroll utility */
 .reveal {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 700ms ease-out, transform 700ms ease-out;
+  transform: translateY(20px);
+  transition: opacity 520ms cubic-bezier(0.2, 0.7, 0.2, 1),
+              transform 520ms cubic-bezier(0.2, 0.7, 0.2, 1);
   will-change: opacity, transform;
 }
 .reveal.is-visible {
@@ -53,6 +113,23 @@ textarea:focus-visible {
   transform: translateY(0);
 }
 
+/* Hero signature reveal — staggered, fires on page load, not on scroll. */
+.hero-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: hero-stagger-in 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.hero-stagger > *:nth-child(1) { animation-delay: 80ms; }
+.hero-stagger > *:nth-child(2) { animation-delay: 180ms; }
+.hero-stagger > *:nth-child(3) { animation-delay: 280ms; }
+.hero-stagger > *:nth-child(4) { animation-delay: 380ms; }
+.hero-stagger > *:nth-child(5) { animation-delay: 480ms; }
+@keyframes hero-stagger-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  .hero-stagger > * { opacity: 1; transform: none; animation: none; }
 }

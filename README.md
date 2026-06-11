@@ -2,7 +2,9 @@
 
 A clean, minimal, light-theme personal portfolio for William Nasoni — Full Stack & Mobile Developer based in Manchester, UK.
 
-Built with **Next.js (App Router) + TypeScript + Tailwind CSS**, configured as a **static export** ready to deploy to **Netlify** (free tier) with **Netlify Forms** wired up for the contact form.
+The site is **industry-led**: it presents the **industries** William works in (Education, Finance, Customer Engagement) and the **capabilities** he offers across all of them — with Selected Work kept light as supporting evidence.
+
+Built with **Next.js (App Router) + TypeScript + Tailwind CSS** (Geist + Geist Mono via `next/font`), configured as a **static export** ready to deploy to **Netlify** (free tier) with **Netlify Forms** wired up for the contact form.
 
 ---
 
@@ -33,7 +35,6 @@ All assets go into `public/` (referenced from the root, e.g. `/cv/...`).
 | ---------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | CV PDF           | `public/cv/William-Nasoni-CV.pdf`     | The hero **Download CV** button links here.                                                      |
 | Profile photo    | `public/profile.jpg` (or similar)     | Currently a styled "WN" placeholder in the About section — see `components/About.tsx`.           |
-| Project screenshots | `public/projects/<slug>.png`       | Each project card shows a neutral placeholder — replace in `components/Projects.tsx` with `<img>`. |
 | Intro video      | `public/video/intro.mp4` **or** an embed URL | See below.                                                                              |
 | Favicon          | `public/favicon.svg`                  | Already set (initials block).                                                                    |
 
@@ -51,9 +52,9 @@ export const INTRO_VIDEO = { type: 'embed', src: 'https://www.youtube.com/embed/
 
 Leaving it as `placeholder` shows the styled "Video coming soon" block.
 
-### Setting the GitHub URL
+### Updating the GitHub URL
 
-Open `lib/site.ts` and replace `GITHUB_URL`.
+`GITHUB_URL` in `lib/site.ts` is set to `https://github.com/thamzy265`. Change it there if it moves.
 
 ---
 
@@ -85,8 +86,7 @@ The form also has a hidden `bot-field` honeypot.
 
 ## Things flagged to confirm
 
-- **Years of experience** — CV says "5+ years"; LinkedIn bio says "7 years". The site uses **7 years** (the more current source). Confirm or adjust in `lib/site.ts` (`About` component) and `Hero` if needed.
-- **GitHub URL** — placeholder `https://github.com/TODO` in `lib/site.ts`. Replace before publishing.
+- **Years of experience** — CV says "5+ years"; bio says "7 years". The site uses **7 years** consistently (the more current source). Confirm or adjust in `lib/site.ts` and the About component if needed.
 - **Domain** — `SITE_URL` in `app/layout.tsx` is set to `https://williamnasoni.com`. Update if the production domain is different (affects OG tags and sitemap).
 - **Phone number** — intentionally not displayed anywhere (per spec).
 
@@ -96,7 +96,7 @@ The form also has a hidden `bot-field` honeypot.
 
 ```
 app/
-  layout.tsx       # root layout, fonts, metadata, OG/twitter, favicon
+  layout.tsx       # root layout, fonts (Geist + Geist Mono), metadata, OG/twitter, favicon
   page.tsx         # single-page composition of all sections
   sitemap.ts       # sitemap.xml generator
   globals.css      # Tailwind base + design tokens + reveal animation
@@ -105,14 +105,15 @@ components/
   Hero.tsx
   About.tsx
   IntroVideo.tsx
-  Projects.tsx     # featured project cards
-  AdditionalWork.tsx
+  Industries.tsx   # three industry cards (Education / Finance / CX) — the core
+  Capabilities.tsx # cross-cutting capability grid ("What I do")
   Experience.tsx   # timeline
-  Skills.tsx       # grouped skills + languages
+  SelectedWork.tsx # compact, understated list of representative builds
+  Skills.tsx       # grouped skill tags
   Contact.tsx      # Netlify Forms contact form
   Footer.tsx
   RevealOnScroll.tsx # fade-in IntersectionObserver, respects reduced-motion
-  Section.tsx      # shared section shell
+  Section.tsx      # shared section shell (eyebrow + title + intro)
 lib/
   site.ts          # ALL site content + URLs — edit here
 public/
@@ -124,4 +125,4 @@ next.config.mjs    # output: 'export' (static export)
 tailwind.config.ts
 ```
 
-Edit `lib/site.ts` to update any content. Restart the dev server after edits.
+Edit `lib/site.ts` to update any content — `INDUSTRIES`, `CAPABILITIES`, `EXPERIENCE`, `SELECTED_WORK`, `SKILLS`, `NAV_LINKS`, plus contact URLs and the intro-video config. Restart the dev server after edits.

@@ -15,18 +15,20 @@ const config: Config = {
           subtle: '#8a93a0',
         },
         paper: {
-          DEFAULT: '#fbfbfa',
-          alt: '#f4f4f1',
-          line: '#e6e6e1',
+          DEFAULT: '#fcfcfb',
+          alt: '#eaf3f2',
+          line: '#e2e8e6',
         },
         accent: {
           DEFAULT: '#0f6f6a',
           hover: '#0a5955',
-          soft: '#e6f2f1',
+          soft: '#dceeec',
+          tint: '#f3faf8',
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       maxWidth: {
         content: '72rem',

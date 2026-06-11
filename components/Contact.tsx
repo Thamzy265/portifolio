@@ -61,9 +61,11 @@ export default function Contact() {
   return (
     <Section
       id="contact"
+      index="08"
       eyebrow="Contact"
       title="Let's talk."
       intro="Have a project in mind, a role to discuss, or just want to say hi? Drop a message — I read everything."
+      className="bg-paper-alt"
     >
       <div className="grid gap-10 lg:grid-cols-[1fr_360px] lg:gap-16">
         <form

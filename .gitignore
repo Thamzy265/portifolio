@@ -30,3 +30,6 @@ next-env.d.ts
 # vercel/netlify
 .vercel
 .netlify
+
+# local working drafts / Claude prompts
+claude-code-portfolio-prompt*.md
