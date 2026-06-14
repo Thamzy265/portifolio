@@ -27,59 +27,6 @@ The output lands in `out/` and can be served by any static host. `netlify.toml` 
 
 ---
 
-## Where my assets live
-
-Everything lives in `public/` (referenced from the root, e.g. `/cv/...`).
-
-| Asset            | Path                                  | Notes                                                                                            |
-| ---------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| CV PDF           | `public/cv/William-Nasoni-CV.pdf`     | The hero **Download CV** button links here.                                                      |
-| Profile photo    | `public/profile.jpg`                  | Wired up via `PROFILE_PHOTO` in `lib/site.ts`. Set to `null` to fall back to the "WN" placeholder. |
-| Intro video      | `public/video/intro.mp4` **or** an embed URL | The `IntroVideo` component is currently not rendered — I'll add it back when the video is ready. |
-| Favicon          | `public/favicon.svg`                  | Initials block.                                                                                  |
-
-### Adding the intro video back
-
-When I'm ready to add the video:
-
-1. Drop the file in `public/video/intro.mp4` (or set up an embed URL).
-2. In `lib/site.ts`, switch `INTRO_VIDEO`:
-   ```ts
-   // Local file:
-   export const INTRO_VIDEO = { type: 'local', src: '/video/intro.mp4' };
-
-   // YouTube / Vimeo embed:
-   export const INTRO_VIDEO = { type: 'embed', src: 'https://www.youtube.com/embed/VIDEO_ID' };
-   ```
-3. Add `<IntroVideo />` back into `app/page.tsx`.
-
----
-
-## Contact form (Netlify Forms)
-
-The contact form uses **Netlify Forms** — no backend, no API keys.
-
-How it works:
-
-- `public/__forms.html` is a static HTML file containing a plain HTML form with the `name="contact"` attribute. Netlify's build-time form parser discovers this file and registers the form.
-- The real React form in `components/Contact.tsx` POSTs to `/__forms.html` as `application/x-www-form-urlencoded` with matching field names.
-- Submissions appear in **Netlify dashboard → Site → Forms**.
-
-**After the first deploy:** I need to go to **Site settings → Forms → Form notifications** in Netlify and add an email notification so I get pinged about new messages.
-
-The form also has a hidden `bot-field` honeypot.
-
----
-
-## Deploying to Netlify
-
-1. Push to GitHub.
-2. In Netlify: **Add new site → Import an existing project → pick this repo**.
-3. Netlify auto-detects `netlify.toml` (build command `npm run build`, publish dir `out`). Confirm and deploy.
-4. Enable email notifications for the contact form (see above).
-5. (Optional) Set a custom domain in **Site settings → Domain management**.
-
----
 
 ## Project structure
 
@@ -120,4 +67,3 @@ next.config.mjs       # output: 'export' (static export)
 tailwind.config.ts
 ```
 
-To update any content, edit `lib/site.ts` — `INDUSTRIES`, `CAPABILITIES`, `EXPERIENCE`, `SELECTED_WORK`, `SKILLS`, `NAV_LINKS`, plus contact URLs, the intro-video config, and the profile-photo path. The dev server hot-reloads on save.
