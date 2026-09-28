@@ -53,11 +53,11 @@ export const INDUSTRIES = [
   {
     id: 'customer-engagement',
     name: 'Call Centre & Customer Engagement',
-    headline: { value: '600+', label: 'Agents served' },
+    headline: { value: '300+', label: 'Agents served' },
     build:
       'Dynamic campaign-management platforms that let teams configure and launch new campaigns without rebuilding anything — plus call-QA, audit trails, and agent scorecards so managers can track agent performance on calls.',
     proof:
-      'A platform serving 600+ agents — campaign launches cut from 3–5 days to hours through a configurable forms engine.',
+      'A platform serving 300+ agents — campaign launches cut from 3–5 days to hours through a configurable forms engine.',
   },
 ] as const;
 
@@ -75,7 +75,7 @@ export const CAPABILITIES = [
   {
     title: 'Legacy modernisation',
     body:
-      'Rebuilding outdated systems to modern standards: a Microsoft Access frontend used by 600+ agents migrated to Angular; a Java/Android platform rebuilt in Flutter, consolidating 2 codebases into 1.',
+      'Rebuilding outdated systems to modern standards: a Microsoft Access frontend used by 300+ agents migrated to Angular; a Java/Android platform rebuilt in Flutter, consolidating 2 codebases into 1.',
   },
   {
     title: 'Configurable platforms',
@@ -154,7 +154,7 @@ export const SELECTED_WORK = [
   },
   {
     what: 'Call-centre campaign management platform',
-    detail: '600+ agents, launches cut from 3–5 days to hours; call-QA, audit, and agent scorecard modules.',
+    detail: '300+ agents, launches cut from 3–5 days to hours; call-QA, audit, and agent scorecard modules.',
     tech: ['Angular', 'Node.js', 'MSSQL', 'Docker'],
   },
   {
