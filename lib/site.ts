@@ -57,7 +57,7 @@ export const INDUSTRIES = [
     build:
       'Dynamic campaign-management platforms that let teams configure and launch new campaigns without rebuilding anything — plus call-QA, audit trails, and agent scorecards so managers can track agent performance on calls.',
     proof:
-      'A platform serving 300+ agents — campaign launches cut from 3–5 days to hours through a configurable forms engine.',
+      'A platform serving 300+ agents, moved off per-PC installs into the browser so every agent runs the same version, with campaign launches cut from 3–5 days to hours.',
   },
 ] as const;
 
@@ -114,7 +114,7 @@ export const EXPERIENCE = [
     location: 'Remote',
     period: '2024 – Jul 2026',
     summary:
-      'Angular · Node.js · MSSQL · Docker. Replaced a legacy Microsoft Access front end with Angular/Node.js front ends, plus a dynamic forms engine.',
+      'Angular · Node.js · MSSQL · Docker. Moved a legacy Microsoft Access desktop install to browser-based Angular/Node.js front ends, plus a dynamic forms engine.',
   },
   {
     company: 'Computer Accountant',
@@ -154,7 +154,7 @@ export const SELECTED_WORK = [
   },
   {
     what: 'Call-centre campaign management platform',
-    detail: '300+ agents, launches cut from 3–5 days to hours; call-QA, audit, and agent scorecard modules.',
+    detail: '300+ agents moved from a per-campaign desktop install to the browser; launches cut from 3–5 days to hours; call-QA, audit, and agent scorecard modules.',
     tech: ['Angular', 'Node.js', 'MSSQL', 'Docker'],
   },
   {
@@ -222,22 +222,22 @@ export const FEATURED_PROJECT = {
     {
       label: 'Situation',
       body:
-        'A call centre with 300+ agents running on a legacy Microsoft Access front end. The brief was a new UI.',
+        'A call centre with 300+ agents running on a legacy Microsoft Access front end \u2014 a separate executable per campaign, installed on every agent\u2019s PC. The brief was to move it to a web-based system.',
     },
     {
       label: 'What I found',
       body:
-        'Talking to the campaign managers, the real cost was that about 15 campaigns had each been rebuilt from scratch, causing duplicated code and recurring bugs.',
+        'Keeping those installs current was the running cost. IT had to touch each machine to update it, and PCs drifted out of date \u2014 so agents on the same campaign could be working on different versions of the application without anyone noticing.',
     },
     {
       label: 'What I built',
       body:
-        'Angular/TypeScript front ends over Node.js REST APIs and MSSQL, replacing the Access front end; a configurable forms-and-calculations engine so non-technical teams set up campaign logic themselves; call-QA, audit and agent-scorecard dashboards.',
+        'Angular/TypeScript front ends over Node.js REST APIs and MSSQL, served in the browser instead of installed per machine; a configurable forms-and-calculations engine so non-technical teams set up campaign logic themselves; call-QA, audit and agent-scorecard dashboards.',
     },
     {
       label: 'What changed',
       body:
-        'New-campaign launch time fell from 3–5 days to hours, developer involvement per campaign dropped by roughly 90%, and a whole class of bugs disappeared.',
+        'Nothing to install and nothing to keep in step: a change ships once and every agent has it at their next page load, so the outdated-client problem disappeared and IT stopped updating desks one at a time. Opening a new site or onboarding an agent became a login rather than a visit, with no per-machine Windows or Access dependency to carry. New-campaign launch time fell from 3–5 days to hours and developer involvement per campaign dropped by roughly 90%.',
     },
   ],
 } as const;
