@@ -333,9 +333,7 @@ export const CLIENT_PROJECTS = [
     tech: [] as string[],
     client: 'Concern Worldwide',
     country: 'Malawi',
-    // TODO: PROSPER dates unknown. Fill in the years here (e.g. '2021–2023');
-    // left empty so nothing broken shows on the page in the meantime.
-    period: '',
+    period: '2021',
     href: 'https://cgatechnologies.org.uk/projects/promotion-sustainable-partnerships-empowered-resilience-programme-prosper-development',
     story:
       'A shared reporting platform for a resilience programme covering 1.2 million people, letting five INGO and four UN partners submit field data and track progress against programme indicators.',
