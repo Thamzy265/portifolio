@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
   variable: '--font-mono',
 });
 
-const SITE_URL = 'https://wnasoni.com'; // TODO: replace with actual domain when known
+const SITE_URL = 'https://wnasoni.com';
 const SITE_NAME = 'William Nasoni';
 const SITE_TITLE = 'William Nasoni — Senior Full Stack & Mobile Developer';
 const SITE_DESCRIPTION =
