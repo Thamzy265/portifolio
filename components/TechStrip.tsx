@@ -53,7 +53,7 @@ export default function TechStrip() {
       className="scroll-mt-20 border-t border-paper-line/70 bg-paper py-14 sm:py-16"
     >
       <div className="mx-auto max-w-content px-5 sm:px-8">
-        <div className="reveal mb-7 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
+        <div className="reveal mb-7 flex items-center gap-3 font-mono text-[12px] uppercase tracking-[0.22em] text-accent">
           <span className="inline-block h-px w-8 bg-accent" />
           Built with
         </div>
@@ -72,7 +72,7 @@ export default function TechStrip() {
               >
                 <path d={logo.path} />
               </svg>
-              <span className="font-mono text-[11px] uppercase tracking-[0.14em]">
+              <span className="font-mono text-[12px] uppercase tracking-[0.14em]">
                 {logo.name}
               </span>
             </li>

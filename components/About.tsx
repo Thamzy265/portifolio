@@ -33,8 +33,8 @@ export default function About() {
             Laravel, Docker — and I adapt to whatever the project needs.
           </p>
           <p>
-            These days, I&apos;m building a unified call-centre campaign platform serving
-            600+ agents, and rebuilding a cross-platform field data-capture app in Flutter.
+            These days, I&apos;m building a multi-campaign call-centre platform as a
+            product, and rebuilding a cross-platform field data-capture app in Flutter.
           </p>
 
           <blockquote className="mt-8 border-l-2 border-accent pl-5 text-lg italic text-ink sm:text-xl">
@@ -93,7 +93,7 @@ function Stat({
           <span className="ml-1 text-sm font-normal text-ink-muted">{suffix}</span>
         )}
       </div>
-      <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-subtle">
+      <div className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-subtle">
         {label}
       </div>
     </div>

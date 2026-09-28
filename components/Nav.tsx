@@ -1,11 +1,19 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { NAV_LINKS } from '@/lib/site';
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const onHome = pathname === '/';
+
+  // The section links are in-page anchors, which resolve to nothing on any
+  // other route — so off the home page they are prefixed to point back at it.
+  const resolve = (href: string) =>
+    href.startsWith('#') && !onHome ? `/${href}` : href;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -38,8 +46,8 @@ export default function Nav() {
         className="mx-auto flex h-16 max-w-content items-center justify-between px-5 sm:px-8"
       >
         <a
-          href="#top"
-          className="text-[15px] font-semibold tracking-tightish text-ink"
+          href={onHome ? '#top' : '/'}
+          className="text-[16px] font-semibold tracking-tightish text-ink"
           aria-label="William Nasoni — home"
         >
           William Nasoni<span className="text-accent">.</span>
@@ -49,8 +57,11 @@ export default function Nav() {
           {NAV_LINKS.map((l) => (
             <li key={l.href}>
               <a
-                href={l.href}
-                className="font-mono text-[12px] uppercase tracking-[0.14em] text-ink-muted transition-colors hover:text-ink"
+                href={resolve(l.href)}
+                aria-current={pathname === l.href ? 'page' : undefined}
+                className={`font-mono text-[13px] uppercase tracking-[0.14em] transition-colors hover:text-ink ${
+                  pathname === l.href ? 'text-ink' : 'text-ink-muted'
+                }`}
               >
                 {l.label}
               </a>
@@ -60,7 +71,7 @@ export default function Nav() {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-ink md:hidden"
+          className="-mr-1 inline-flex h-11 w-11 items-center justify-center rounded-md text-ink md:hidden"
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -81,9 +92,12 @@ export default function Nav() {
           {NAV_LINKS.map((l) => (
             <li key={l.href}>
               <a
-                href={l.href}
+                href={resolve(l.href)}
                 onClick={() => setOpen(false)}
-                className="block rounded-md px-2 py-3 text-base text-ink-soft hover:bg-paper-alt"
+                aria-current={pathname === l.href ? 'page' : undefined}
+                className={`block rounded-md px-2 py-3 text-base hover:bg-paper-alt ${
+                  pathname === l.href ? 'font-medium text-ink' : 'text-ink-soft'
+                }`}
               >
                 {l.label}
               </a>

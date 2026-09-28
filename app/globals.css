@@ -79,7 +79,7 @@ body {
 
 /* Dot-grid utility used in the hero */
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(15,111,106,0.22) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(169,70,42,0.22) 1px, transparent 1px);
   background-size: 22px 22px;
   background-position: 0 0;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%);
@@ -132,4 +132,24 @@ textarea:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero-stagger > * { opacity: 1; transform: none; animation: none; }
+}
+
+/* Typographic line breaking: headings balance across lines rather than leaving a
+   single orphaned word; body copy avoids one-word last lines. Both degrade
+   silently in browsers that do not support them. */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p, li, dd, figcaption {
+  text-wrap: pretty;
+}
+
+/* Display headings are set in the serif; smaller headings and all body copy
+   stay in the grotesque. Mixing the two is what gives the page its editorial
+   feel without turning long text into a reading chore. */
+h1, h2 {
+  font-family: theme('fontFamily.serif');
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }

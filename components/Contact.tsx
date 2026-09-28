@@ -123,7 +123,7 @@ export default function Contact() {
               required
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="mt-1.5 block w-full rounded-lg border border-paper-line bg-paper px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-subtle focus:border-accent focus:outline-none"
+              className="mt-1.5 block w-full rounded-lg border border-paper-line bg-paper px-3.5 py-2.5 text-[16px] text-ink placeholder:text-ink-subtle focus:border-accent focus:outline-none"
               placeholder="Tell me about your project, timeline, or what's on your mind…"
             />
           </div>
@@ -160,7 +160,7 @@ export default function Contact() {
           <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
             Or reach me directly
           </h3>
-          <ul className="space-y-2 text-[15px]">
+          <ul className="space-y-2 text-[16px]">
             <li>
               <a
                 href={`mailto:${EMAIL}`}
@@ -232,7 +232,7 @@ function Field({
         autoComplete={autoComplete}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="mt-1.5 block w-full rounded-lg border border-paper-line bg-paper px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-subtle focus:border-accent focus:outline-none"
+        className="mt-1.5 block w-full rounded-lg border border-paper-line bg-paper px-3.5 py-2.5 text-[16px] text-ink placeholder:text-ink-subtle focus:border-accent focus:outline-none"
       />
     </div>
   );

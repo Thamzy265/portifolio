@@ -8,26 +8,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Warm neutral palette. Every value used for text clears WCAG AA (4.5:1)
+        // against both paper and paper-alt — checked, not assumed.
         ink: {
-          DEFAULT: '#111418',
-          soft: '#1f2329',
-          muted: '#5b6470',
-          subtle: '#8a93a0',
+          DEFAULT: '#141413', // 17.50 : 1
+          soft: '#1f1e1d',    // 15.80 : 1
+          muted: '#5e5d59',   //  6.26 : 1
+          subtle: '#6b6862',  //  5.27 : 1
         },
         paper: {
-          DEFAULT: '#fcfcfb',
-          alt: '#eaf3f2',
-          line: '#e2e8e6',
+          DEFAULT: '#faf9f5',
+          alt: '#f0eee6',
+          line: '#e8e6dc',
         },
         accent: {
-          DEFAULT: '#0f6f6a',
-          hover: '#0a5955',
-          soft: '#dceeec',
-          tint: '#f3faf8',
+          // Clay, darkened for text: the bright tone reads 2.96:1 and fails.
+          DEFAULT: '#a8462a', // 5.58 : 1
+          hover: '#8f3a21',   // 7.13 : 1
+          // Bright clay is kept for fills and decoration only, never for text.
+          fill: '#d97757',
+          soft: '#f0dfd5',
+          tint: '#faf2ee',
         },
+      },
+      fontSize: {
+        xs: ['0.8125rem', { lineHeight: '1.125rem' }],
+        sm: ['0.9375rem', { lineHeight: '1.375rem' }],
+        base: ['1.0625rem', { lineHeight: '1.625rem' }],
+        lg: ['1.1875rem', { lineHeight: '1.8125rem' }],
+        xl: ['1.3125rem', { lineHeight: '1.875rem' }],
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       maxWidth: {

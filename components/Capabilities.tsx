@@ -29,7 +29,7 @@ export default function Capabilities() {
           return (
             <li
               key={cap.title}
-              className="reveal group relative flex flex-col gap-4 bg-paper p-6 transition-[transform,box-shadow] duration-300 will-change-transform hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-16px_rgba(17,20,24,0.16)] sm:p-7"
+              className="reveal group relative flex flex-col gap-4 bg-paper p-6 transition-[transform,box-shadow] duration-300 will-change-transform hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-16px_rgba(20,20,19,0.16)] sm:p-7"
               style={{ transitionDelay: `${(i % 3) * 70}ms` }}
             >
               <div className="flex items-center justify-between">
@@ -39,14 +39,14 @@ export default function Capabilities() {
                 >
                   <Icon size={16} strokeWidth={1.75} />
                 </span>
-                <span className="font-mono text-[10px] tracking-wider text-ink-subtle">
+                <span className="font-mono text-[11px] tracking-wider text-ink-subtle">
                   {num}
                 </span>
               </div>
-              <h3 className="text-[17px] font-semibold leading-snug tracking-tightish text-ink">
+              <h3 className="text-[18px] font-semibold leading-snug tracking-tightish text-ink">
                 {cap.title}
               </h3>
-              <p className="text-[14px] leading-relaxed text-ink-muted">{cap.body}</p>
+              <p className="text-[15px] leading-relaxed text-ink-muted">{cap.body}</p>
             </li>
           );
         })}

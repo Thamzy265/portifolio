@@ -27,6 +27,7 @@ export const NAV_LINKS = [
   { href: '#industries', label: 'Industries' },
   { href: '#capabilities', label: 'Capabilities' },
   { href: '#experience', label: 'Experience' },
+  { href: '/projects', label: 'Projects' },
   { href: '#contact', label: 'Contact' },
 ] as const;
 
@@ -56,7 +57,7 @@ export const INDUSTRIES = [
     build:
       'Dynamic campaign-management platforms that let teams configure and launch new campaigns without rebuilding anything — plus call-QA, audit trails, and agent scorecards so managers can track agent performance on calls.',
     proof:
-      'A unified platform serving 600+ agents — campaign launches cut from 3–5 days to hours, ~15 separate systems consolidated into one.',
+      'A platform serving 600+ agents — campaign launches cut from 3–5 days to hours through a configurable forms engine.',
   },
 ] as const;
 
@@ -111,9 +112,9 @@ export const EXPERIENCE = [
     company: 'MarketSA',
     role: 'Full Stack Developer (Contract)',
     location: 'Remote',
-    period: '2024 – Present',
+    period: '2024 – Jul 2026',
     summary:
-      'Angular · Node.js · MSSQL · Docker. Call-centre campaign management platform and dynamic forms engine.',
+      'Angular · Node.js · MSSQL · Docker. Replaced a legacy Microsoft Access front end with Angular/Node.js front ends, plus a dynamic forms engine.',
   },
   {
     company: 'Computer Accountant',
@@ -153,7 +154,7 @@ export const SELECTED_WORK = [
   },
   {
     what: 'Call-centre campaign management platform',
-    detail: '600+ agents, launches cut from 3–5 days to hours, ~15 systems consolidated into one; call-QA, audit, and agent scorecard modules.',
+    detail: '600+ agents, launches cut from 3–5 days to hours; call-QA, audit, and agent scorecard modules.',
     tech: ['Angular', 'Node.js', 'MSSQL', 'Docker'],
   },
   {
@@ -202,4 +203,167 @@ export const PERSONAL_ATTRIBUTES = [
   'Strong leadership',
   'Problem solver',
   'Attention to detail',
+] as const;
+
+// ─── /projects page ──────────────────────────────────────────────────────────
+
+// Walkthrough of the campaign platform. Local file so there is no third-party
+// embed to load; the player only fetches it once the visitor presses play.
+export const PROJECT_VIDEO = {
+  src: '/video/campaign-platform-walkthrough.mp4',
+  poster: '/video/campaign-platform-poster.jpg',
+} as const;
+
+export const FEATURED_PROJECT = {
+  title: 'MarketSA — call-centre campaign platform',
+  period: '2024–Jul 2026',
+
+  story: [
+    {
+      label: 'Situation',
+      body:
+        'A call centre with 300+ agents running on a legacy Microsoft Access front end. The brief was a new UI.',
+    },
+    {
+      label: 'What I found',
+      body:
+        'Talking to the campaign managers, the real cost was that about 15 campaigns had each been rebuilt from scratch, causing duplicated code and recurring bugs.',
+    },
+    {
+      label: 'What I built',
+      body:
+        'Angular/TypeScript front ends over Node.js REST APIs and MSSQL, replacing the Access front end; a configurable forms-and-calculations engine so non-technical teams set up campaign logic themselves; call-QA, audit and agent-scorecard dashboards.',
+    },
+    {
+      label: 'What changed',
+      body:
+        'New-campaign launch time fell from 3–5 days to hours, developer involvement per campaign dropped by roughly 90%, and a whole class of bugs disappeared.',
+    },
+  ],
+} as const;
+
+// The platform the walkthrough video shows. This is NOT the MarketSA system —
+// it is a separate, multi-campaign build. Everything below is verifiable from
+// the running application; the TODOs are the facts only you can supply.
+export const OWN_PROJECT = {
+  // TODO: confirm the name you want shown publicly.
+  title: 'Akasi CRM — multi-campaign call-centre platform',
+  // TODO: add the period, e.g. '2026–present'.
+  period: '',
+  status:
+    'A product I am building, inspired by the work I did at MarketSA: one platform that runs any number of campaigns from configuration, instead of a separate build for each.',
+  videoCaption: 'A short walkthrough of the platform.',
+  videoNote:
+    'Recorded against generated demo data — names, ID numbers and bank details are invented.',
+  points: [
+    'An Angular front end over Node.js APIs, where each campaign points at its own database — SQL Server or PostgreSQL.',
+    'A form builder where an admin picks the campaign database table and maps each field to a real column, so captured leads write straight back.',
+    'QA and audit scorecards configured per campaign, with the pass/fail rules set by an admin rather than in code.',
+    'Fields an admin marks sensitive are masked for reviewers; revealing one returns a single value and writes an audit record of who looked, at what, and when.',
+  ],
+} as const;
+
+// Client work delivered through CGA Technologies. The code belongs to the
+// clients, so each entry links to the public project page instead.
+export const CLIENT_PROJECTS = [
+  {
+    name: 'Perivoli Early Childhood Development Data System',
+    tech: ['Node.js', 'Vue.js', 'Android', 'AWS'] as string[],
+    client: 'Perivoli Schools Trust',
+    country: 'Malawi / Namibia / Zambia',
+    period: '2020–2025',
+    href: 'https://cgatechnologies.org.uk/projects/perivoli-early-childhood-development-data-collection-and-management-reforms-malawi-namibia',
+    story:
+      'The Trust trains nursery teachers in three countries and needed one standard way to collect and report training data as it grew. The brief was to digitise paper forms; the real need was for head office to see training activity as it happened. We built an offline-first tablet app and a database that publishes results to the Trust\u2019s website in real time, and digitised 5,000+ historic paper records. Forms were built as configurable templates so partner staff could change them without a developer.',
+    role:
+      'Lead developer for the Node.js APIs, Vue.js front end and Android capture app on AWS (ECS, RDS, S3, Lambda); ran UAT, trained partner teams, wrote the SOPs.',
+  },
+  {
+    name: 'Teacher Management Information System (TMIS)',
+    tech: ['Vue.js', 'Laravel', 'GraphQL', 'MySQL'] as string[],
+    client: 'Teaching Service Commission (World Bank-funded)',
+    country: 'Sierra Leone',
+    period: '2023–2024',
+    href: 'https://cgatechnologies.org.uk/projects/sierra-leone-teacher-management-information-system-tmis',
+    story:
+      'A national platform replacing paper workflows for 36,000+ payroll teachers, where a leave or transfer request used to mean a physical trip to headquarters. Live since January 2024 with 23,000+ teachers registered, 9,700+ licensing exams passed and 3,700 teachers recruited onto payroll through it.',
+    role:
+      'Full stack developer (Vue.js, Laravel, GraphQL, MySQL). Built the teacher licensing module to the Commission\u2019s specification, the SQL and analytics behind the departmental dashboards, and automated ministry reports.',
+  },
+  {
+    name: 'Wi De Ya — One Tablet Per School',
+    tech: ['Android', 'SQL'] as string[],
+    client: 'Teaching Service Commission (World Bank-funded)',
+    country: 'Sierra Leone',
+    period: '2022–2023',
+    href: 'https://cgatechnologies.org.uk/projects/wi-de-ya-one-tablet-school-sierra-leone',
+    story:
+      'A national attendance system where every school leader records daily teacher and pupil attendance on an offline-capable tablet that syncs to a secure database and public dashboard; rolled out to 300 primary schools and linked to teacher payroll records.',
+    role:
+      'Developed the data-capture app and the MIS dashboard and reports consolidating attendance data across schools and regions, giving the Ministry its first national view of attendance.',
+  },
+  {
+    name: 'Social Cash Transfer Programme MIS',
+    tech: ['Java', 'Spring Boot', 'MySQL'] as string[],
+    client: 'Ministry of Gender (KfW/EU-funded)',
+    country: 'Malawi',
+    period: '2020–2023',
+    href: 'https://cgatechnologies.org.uk/projects/social-cash-transfer-programme-sctp-lot-2-rebuilding-sctp-management-information-system',
+    story:
+      'Rebuild of the system behind a national cash transfer programme reaching 300,000+ households, adding an integrated grievance and case-management module linked to a call centre and real-time coverage indicators.',
+    role:
+      'Full stack developer on the Spring Boot/MySQL system; built the organisation and participant modules managing implementing partners and enrolled households.',
+  },
+  {
+    name: 'Malawi Education Sector Improvement Programme',
+    tech: ['PHP', 'JavaScript', 'MySQL'] as string[],
+    client: 'Ministry of Education',
+    country: 'Malawi',
+    period: '2021',
+    href: 'https://cgatechnologies.org.uk/projects/malawi-education-sector-improvement-programme-mesip-development-attendance-tracking-app',
+    story:
+      'A tablet-based real-time monitoring system for zonal officers covering 1,200 primary schools (21% of the country), and a Community Dialogue Platform through which 150 school communities raise issues with the Ministry by SMS and voice.',
+    role:
+      'Technical lead directing delivery of the monitoring app, dashboard and Excel reporting; trained ministry officers to run it without developer support.',
+  },
+  {
+    name: 'PROSPER Monitoring & Reporting MIS',
+    // TODO: stack not named on this page or in the CV. Add it here and
+    // the chips appear automatically.
+    tech: [] as string[],
+    client: 'Concern Worldwide',
+    country: 'Malawi',
+    // TODO: PROSPER dates unknown. Fill in the years here (e.g. '2021–2023');
+    // left empty so nothing broken shows on the page in the meantime.
+    period: '',
+    href: 'https://cgatechnologies.org.uk/projects/promotion-sustainable-partnerships-empowered-resilience-programme-prosper-development',
+    story:
+      'A shared reporting platform for a resilience programme covering 1.2 million people, letting five INGO and four UN partners submit field data and track progress against programme indicators.',
+    role:
+      'Built the MIS data-capture system through which partners submit their field data.',
+  },
+  {
+    name: 'Monitoring, Evaluation & Learning Platform',
+    tech: ['Java', 'Android'] as string[],
+    client: 'Education Development Trust (FCDO-funded)',
+    country: 'Ethiopia',
+    period: '2021–2022',
+    href: 'https://cgatechnologies.org.uk/projects/establish-monitoring-evaluation-and-learning-mel-platform',
+    story:
+      'A cloud-based M&E platform supporting the Ethiopian Ministry of Education, with a mobile app for offline entry and user-configurable dashboards, built as an open system the Ethiopian authorities own outright.',
+    role:
+      'Android developer on the offline-first capture app, in a four-person peer-reviewed team, building dynamic form schemas and sync.',
+  },
+  {
+    name: '3D — CGA\u2019s field-to-insight data platform',
+    tech: ['Flutter', 'Dart', 'GitHub Actions'] as string[],
+    client: 'Corus International',
+    country: '',
+    period: 'Oct 2024–present',
+    href: 'https://cgatechnologies.org.uk/3d',
+    story:
+      'CGA\u2019s product for development programmes: offline-first smart-form collection, submission review with a full audit trail, role-based permissions and real-time dashboards.',
+    role:
+      'Leading the rebuild of the mobile app in Flutter, merging the separate Android and iOS codebases into one, with GitHub Actions CI and automated tests.',
+  },
 ] as const;

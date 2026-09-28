@@ -17,11 +17,11 @@ export default function SelectedWork() {
             key={item.what}
             className="grid grid-cols-[auto_1fr] gap-x-5 gap-y-2 py-5 sm:grid-cols-[auto_1fr_auto] sm:gap-x-8 sm:py-6"
           >
-            <span className="font-mono text-[11px] leading-7 tracking-wider text-ink-subtle">
+            <span className="font-mono text-[12px] leading-7 tracking-wider text-ink-subtle">
               {String(i + 1).padStart(2, '0')}
             </span>
             <div className="min-w-0">
-              <h3 className="text-[15px] font-medium leading-snug text-ink">
+              <h3 className="text-[16px] font-medium leading-snug text-ink">
                 {item.what}
               </h3>
               <p className="mt-1 text-sm leading-relaxed text-ink-muted">
@@ -32,7 +32,7 @@ export default function SelectedWork() {
               {item.tech.map((t) => (
                 <span
                   key={t}
-                  className="inline-flex items-center rounded-full border border-paper-line bg-paper px-3 py-1 font-mono text-[11px] leading-none text-ink-muted"
+                  className="inline-flex items-center rounded-full border border-paper-line bg-paper px-3 py-1 font-mono text-[12px] leading-none text-ink-muted"
                 >
                   {t}
                 </span>

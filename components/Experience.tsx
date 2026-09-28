@@ -20,7 +20,7 @@ export default function Experience() {
             <div className="text-sm text-ink-muted">
               {e.role} · <span className="text-ink-subtle">{e.location}</span>
             </div>
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-soft sm:text-[15px]">
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-soft sm:text-[16px]">
               {e.summary}
             </p>
           </li>

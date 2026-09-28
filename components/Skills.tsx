@@ -15,7 +15,7 @@ export default function Skills() {
             key={g.group}
             className="reveal rounded-2xl border border-paper-line bg-paper p-6"
           >
-            <h3 className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
+            <h3 className="font-mono text-[12px] uppercase tracking-[0.22em] text-accent">
               {g.group}
             </h3>
             <ul className="mt-4 flex flex-wrap gap-2">

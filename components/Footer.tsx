@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto flex max-w-content flex-col items-start justify-between gap-4 px-5 py-10 sm:flex-row sm:items-center sm:px-8">
         <div className="space-y-1 text-sm text-ink-muted">
           <div>© {year} William Nasoni.</div>
-          <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-subtle">
+          <div className="font-mono text-[12px] uppercase tracking-[0.16em] text-ink-subtle">
             Designed &amp; built by William Nasoni
           </div>
         </div>

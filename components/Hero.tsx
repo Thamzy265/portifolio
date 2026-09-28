@@ -24,7 +24,7 @@ export default function Hero() {
           William Nasoni
         </h1>
 
-        <p className="mt-5 max-w-3xl font-mono text-[13px] uppercase tracking-[0.16em] text-ink-soft sm:text-sm">
+        <p className="mt-5 max-w-3xl font-mono text-[14px] uppercase tracking-[0.16em] text-ink-soft sm:text-sm">
           Senior Full Stack &amp; Mobile Developer
         </p>
 

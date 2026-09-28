@@ -25,7 +25,7 @@ export default function Industries() {
           return (
             <article
               key={industry.id}
-              className="reveal group relative flex flex-col gap-6 bg-paper p-7 transition-[transform,box-shadow] duration-300 will-change-transform hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(15,111,106,0.25)] sm:p-9"
+              className="reveal group relative flex flex-col gap-6 bg-paper p-7 transition-[transform,box-shadow] duration-300 will-change-transform hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(169,70,42,0.25)] sm:p-9"
               style={{ transitionDelay: `${i * 90}ms` }}
             >
               <header className="flex items-start justify-between">
@@ -40,12 +40,12 @@ export default function Industries() {
                 </span>
               </header>
 
-              <h3 className="text-2xl font-semibold leading-tight tracking-tightish text-ink sm:text-[26px]">
+              <h3 className="text-2xl font-semibold leading-tight tracking-tightish text-ink sm:text-[28px]">
                 {industry.name}
               </h3>
 
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-subtle">
+                <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-subtle">
                   {industry.headline.label}
                 </div>
                 <div className="mt-1 text-4xl font-semibold tracking-tightish text-accent sm:text-5xl">
@@ -53,12 +53,12 @@ export default function Industries() {
                 </div>
               </div>
 
-              <p className="text-[15px] leading-relaxed text-ink-soft">
+              <p className="text-[16px] leading-relaxed text-ink-soft">
                 {industry.build}
               </p>
 
               <footer className="mt-auto border-t border-paper-line pt-5">
-                <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-subtle">
+                <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-subtle">
                   Proof
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">

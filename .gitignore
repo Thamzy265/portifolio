@@ -33,3 +33,6 @@ next-env.d.ts
 
 # local working drafts / Claude prompts
 claude-code-portfolio-prompt*.md
+
+# JetBrains IDE
+/.idea/

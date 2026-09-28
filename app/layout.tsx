@@ -1,11 +1,20 @@
 import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Newsreader } from 'next/font/google';
 import './globals.css';
 
 const geistSans = Geist({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
+});
+
+// Serif display face for headings. Anthropic's own (Copernicus/Styrene) are
+// licensed brand fonts, so this is the closest freely-licensed equivalent.
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-serif',
+  weight: ['400', '500', '600'],
 });
 
 const geistMono = Geist_Mono({
@@ -55,14 +64,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#fbfbfa',
+  themeColor: '#faf9f5',
   width: 'device-width',
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable}`}>
       <body className="font-sans antialiased">
         <a
           href="#main"
